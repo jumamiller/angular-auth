@@ -4,32 +4,36 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form">
-
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <mat-card-content>
+
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
+          <input matInput placeholder="First Name" name="firstName" formControlName="firstName" required>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" required>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password">
+          <input matInput placeholder="Username" name="username" formControlName="username" required>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Choose a role...</mat-label>
-          <mat-select>
-            <mat-option>
-            </mat-option>
-          </mat-select>
+          <input type="email" matInput placeholder="Email Address" name="email" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="tel" matInput placeholder="Phone Number" name="phone" formControlName="phone" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input type="password" matInput placeholder="Password" name="password" formControlName="password">
         </mat-form-field>
 
       </mat-card-content>
 
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
+      <button mat-raised-button color="accent" class="btn-block">Register</button>
 
     </form>
   </mat-card>
