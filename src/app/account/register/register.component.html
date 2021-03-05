@@ -4,36 +4,61 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
       <mat-card-content>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="First Name" name="firstName" formControlName="firstName" required>
+          <mat-error *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+            <mat-error *ngIf="firstName.errors?.required">First name is required!</mat-error>
+            <mat-error *ngIf="firstName.errors?.minlength">A name must be at least 4 characters long!</mat-error>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Last Name" name="lastName" formControlName="lastName" required>
+          <mat-error *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+            <mat-error *ngIf="lastName.errors?.required">Last name is required!</mat-error>
+            <mat-error *ngIf="lastName.errors?.minlength">A name must be at least 4 characters long!</mat-error>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Username" name="username" formControlName="username" required>
+          <mat-error *ngIf="username.invalid && (username.touched || username.dirty)">
+            <mat-error *ngIf="username.errors?.required">Username is required!</mat-error>
+            <mat-error *ngIf="username.errors?.minlength">A name must be at least 4 characters long!</mat-error>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input type="email" matInput placeholder="Email Address" name="email" formControlName="email" required>
+          <mat-error *ngIf="email.invalid && (email.touched || email.dirty)">
+            <mat-error *ngIf="email.errors?.required">Email address is required!</mat-error>
+            <mat-error *ngIf="email.errors?.minlength">An must be at least 6 characters long!</mat-error>
+            <mat-error *ngIf="email.errors?.email">Enter a valid email address!</mat-error>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input type="tel" matInput placeholder="Phone Number" name="phone" formControlName="phone" required>
+          <mat-error *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+            <mat-error *ngIf="phone.errors?.required">Phone number is required!</mat-error>
+            <mat-error *ngIf="phone.errors?.minlength">A phone number must be 10 characters long!</mat-error>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input type="password" matInput placeholder="Password" name="password" formControlName="password">
+          <mat-error *ngIf="password.invalid && (password.touched || password.dirty)">
+            <mat-error *ngIf="password.errors?.required">Password is required!</mat-error>
+            <mat-error *ngIf="password.errors?.minlength">Password must be at least 8 characters long!</mat-error>
+          </mat-error>
         </mat-form-field>
 
       </mat-card-content>
 
-      <button mat-raised-button color="accent" class="btn-block">Register</button>
+      <button [disabled]="registrationForm.invalid" mat-raised-button color="accent" class="btn-block">Register</button>
 
     </form>
   </mat-card>
